@@ -2,31 +2,80 @@
 
 A collection of custom commands for [Claude Code](https://github.com/anthropics/claude-code).
 
+## Prerequisites
+
+- [Claude Code](https://github.com/anthropics/claude-code) installed and configured
+
 ## Installation
 
-Symlink the commands you want to your Claude commands directory:
+### 1. Create the Claude commands directory
+
+If you haven't used custom commands before, create the required folder:
 
 ```bash
-ln -s /path/to/claudius-maximus/commands/my-command ~/.claude/commands/my-command
+mkdir -p ~/.claude/commands
 ```
 
-Or copy the entire commands folder:
+### 2. Install the commands
+
+**Option A: Symlink (recommended)**
+
+Symlinks keep your commands in sync with this repo when you `git pull`:
 
 ```bash
-cp -r commands/* ~/.claude/commands/
+# Clone this repo
+git clone https://github.com/SiCuellar/claudius-maximus.git
+
+# Symlink individual commands
+ln -s /path/to/claudius-maximus/commands/create-prompt.md ~/.claude/commands/create-prompt.md
+ln -s /path/to/claudius-maximus/commands/run-prompt.md ~/.claude/commands/run-prompt.md
 ```
 
-## Adding Commands
+**Option B: Copy files**
 
-Each command lives in its own folder under `commands/`:
-
-```
-commands/
-└── my-command/
-    └── skill.md
+```bash
+cp commands/*.md ~/.claude/commands/
 ```
 
-The `skill.md` file defines the command name and prompt.
+### 3. Verify installation
+
+Open Claude Code and type `/` to see your available commands. You should see `/create-prompt` and `/run-prompt` in the list.
+
+## Available Commands
+
+### `/create-prompt`
+
+An expert prompt engineer that creates optimized, XML-structured prompts. It will:
+
+- Ask clarifying questions about your task
+- Determine complexity and execution strategy
+- Generate well-structured prompts saved to `./prompts/`
+- Offer to run the prompt immediately
+
+**Usage:**
+```
+/create-prompt build a user authentication system
+```
+
+### `/run-prompt`
+
+Executes prompts from your `./prompts/` folder as delegated sub-tasks. Supports:
+
+- Single prompt execution
+- Parallel execution (independent tasks)
+- Sequential execution (dependent tasks)
+
+**Usage:**
+```
+/run-prompt 001                      # Run prompt 001
+/run-prompt                          # Run most recent prompt
+/run-prompt 005 006 007 --parallel   # Run multiple in parallel
+/run-prompt 005 006 007 --sequential # Run multiple sequentially
+```
+
+---
+
+![Are you not entertained?](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXk4OGV6ZnZ1OG11bmt1NnNhdHQ0bWU2czBnOThydDExYWkwbHI1OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d7mMzaGDYkz4ZBziP6/giphy.gif)
 
 ## License
 
