@@ -18,11 +18,23 @@ mkdir -p ~/.claude/commands
 
 ### 2. Install the commands
 
-Clone this repo and copy the commands:
+Clone this repo:
 
 ```bash
 git clone https://github.com/SiCuellar/claudius-maximus.git
+```
+
+Then copy the commands to your preferred location:
+
+**Global (available in all projects):**
+```bash
 cp claudius-maximus/commands/*.md ~/.claude/commands/
+```
+
+**Local (project-specific):**
+```bash
+mkdir -p .claude/commands
+cp claudius-maximus/commands/*.md .claude/commands/
 ```
 
 ### 3. Verify installation
