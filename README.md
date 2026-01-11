@@ -18,23 +18,11 @@ mkdir -p ~/.claude/commands
 
 ### 2. Install the commands
 
-**Option A: Symlink (recommended)**
-
-Symlinks keep your commands in sync with this repo when you `git pull`:
+Clone this repo and copy the commands:
 
 ```bash
-# Clone this repo
 git clone https://github.com/SiCuellar/claudius-maximus.git
-
-# Symlink individual commands
-ln -s /path/to/claudius-maximus/commands/create-prompt.md ~/.claude/commands/create-prompt.md
-ln -s /path/to/claudius-maximus/commands/run-prompt.md ~/.claude/commands/run-prompt.md
-```
-
-**Option B: Copy files**
-
-```bash
-cp commands/*.md ~/.claude/commands/
+cp claudius-maximus/commands/*.md ~/.claude/commands/
 ```
 
 ### 3. Verify installation
